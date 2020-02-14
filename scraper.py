@@ -14,11 +14,6 @@ from utils.response import Response
 
 state_lock = RLock()
 logger = get_logger("scraper")
-import html2text
-
-h = html2text.HTML2Text()
-h.ignore_links = True
-
 with open("stop_words.txt", 'r') as file:
     stop_words = [line.strip() for line in file.readlines()]
 
