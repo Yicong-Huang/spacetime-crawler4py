@@ -37,9 +37,11 @@ class Worker(Thread):
                     f"Downloaded {tbd_url}, hitting error {err}")
 
             self.frontier.mark_url_complete(tbd_url)
-            if i % 10 == 0:
+            if i % 1000 == 0:
                 print(self.state['longest_page'])
-                print_freq(self.state['word_rank'], 25)
+                print_freq(self.state['word_rank'], 50)
+                for domain, count in self.state['sub_domains'].items():
+                    print(domain, count)
                 self.frontier.print_saved()
 
             i += 1
